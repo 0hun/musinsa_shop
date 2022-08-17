@@ -1,24 +1,28 @@
 package com.example.musinsashop.dto;
 
-import com.example.musinsashop.domain.Category;
+import com.example.musinsashop.domain.Brand;
 import com.example.musinsashop.domain.DataStatus;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class CategoryAddDto {
+public class BrandAddDto {
+
+    private Long categoryId;
+
     private String name;
 
-    public CategoryAddDto() {
+    public BrandAddDto() {
     }
 
     @Builder
-    public CategoryAddDto(String name) {
+    public BrandAddDto(long categoryId, String name) {
+        this.categoryId = categoryId;
         this.name = name;
     }
 
-    public Category toEntity(){
-        return Category.builder()
+    public Brand toEntity() {
+        return Brand.builder()
                 .name(this.name)
                 .status(DataStatus.DEFAULT)
                 .build();

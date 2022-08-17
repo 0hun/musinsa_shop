@@ -14,7 +14,6 @@ public class CategoryTest {
         //given
         CategoryAddDto categoryAddDto = CategoryAddDto.builder()
                 .name("상의")
-                .status(DataStatus.DEFAULT)
                 .build();
 
         //when
