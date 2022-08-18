@@ -36,5 +36,8 @@ Git Flow를 사용하여 branch를 관리
 
 ### H2 DB 접속
 + 서버 실행 후 브라우저에 http://localhost:8080/h2 입력
+
+<img width="469" alt="스크린샷 2022-08-18 오후 4 19 29" src="https://user-images.githubusercontent.com/29122916/185334208-d5c96149-e5b9-4ac2-aa00-82fa18708f17.png">
+
 + connect를 누른 뒤 console에 접속
 
