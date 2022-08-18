@@ -7,6 +7,7 @@ import com.example.musinsashop.repository.CategoryRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,7 @@ public class CategoryService {
         return CategorySearchDto.of(category);
     }
 
+    @Cacheable("minPrice")
     public CategoryMinPriceTotalDto findMinPrice() {
         List<Category> categories = categoryRepository.findAll();
 
