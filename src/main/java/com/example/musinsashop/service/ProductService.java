@@ -38,4 +38,11 @@ public class ProductService {
 
         product.updatePrice(dto.getPrice());
     }
+
+    public void deleteProduct(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
+
+        product.delete();
+    }
 }
