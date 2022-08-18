@@ -34,3 +34,7 @@ Git Flow를 사용하여 branch를 관리
 ### ERD
 <img width="1712" alt="스크린샷 2022-08-18 오전 12 46 31" src="https://user-images.githubusercontent.com/29122916/185326603-9ab962af-00a1-4ba5-9674-e0536ccc5c05.png">
 
+### H2 DB 접속
++ 서버 실행 후 브라우저에 http://localhost:8080/h2 입력
++ connect를 누른 뒤 console에 접속
+
