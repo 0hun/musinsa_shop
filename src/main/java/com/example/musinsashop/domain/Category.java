@@ -3,6 +3,7 @@ package com.example.musinsashop.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -29,7 +30,7 @@ public class Category extends BaseTimeEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST)
     private List<Brand> brands = new ArrayList<>();
 
     // 회원 상태 DEFAULT(기본), DELETED(삭제됨)

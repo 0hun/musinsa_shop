@@ -3,6 +3,7 @@ package com.example.musinsashop.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -32,11 +33,11 @@ public class Brand extends BaseTimeEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "brand")
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.PERSIST)
     private List<Product> products = new ArrayList<>();
 
     // 회원 상태 DEFAULT(기본), DELETED(삭제됨)
@@ -95,4 +96,15 @@ public class Brand extends BaseTimeEntity {
         return Objects.hash(id, name, category, status);
     }
 
+    public void delete() {
+        this.status = DataStatus.DELETED;
+    }
+
+    public boolean isDeleted() {
+        if (this.status.equals(DataStatus.DELETED)) {
+            return true;
+        }
+
+        return false;
+    }
 }

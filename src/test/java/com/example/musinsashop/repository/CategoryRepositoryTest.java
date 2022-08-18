@@ -16,7 +16,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class CategoryTest {
+public class CategoryRepositoryTest {
 
     @Autowired
     CategoryRepository categoryRepository;
