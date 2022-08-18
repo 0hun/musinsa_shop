@@ -39,6 +39,7 @@ public class ProductService {
         product.updatePrice(dto.getPrice());
     }
 
+    @Transactional
     public void deleteProduct(Long id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(NoSuchElementException::new);
