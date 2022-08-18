@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ public class BrandService {
 
     private final BrandRepository brandRepository;
 
+    @Cacheable("brandMinPrice")
     public BrandMinPriceDto findMinPrice() {
         List<Brand> brands = brandRepository.findAll();
 

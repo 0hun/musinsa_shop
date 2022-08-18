@@ -17,7 +17,7 @@ public class BrandController {
 
     private final BrandService brandService;
 
-    @GetMapping("/min-price")
+    @GetMapping("/products/min-price")
     public ResponseEntity<BrandMinPriceDto> findMinPrice() {
         BrandMinPriceDto dto = brandService.findMinPrice();
 

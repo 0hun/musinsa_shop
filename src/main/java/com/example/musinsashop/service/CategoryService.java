@@ -1,11 +1,13 @@
 package com.example.musinsashop.service;
 
 import com.example.musinsashop.domain.Category;
+import com.example.musinsashop.dto.CategoryMinMaxPriceDto;
 import com.example.musinsashop.dto.CategoryMinPriceTotalDto;
 import com.example.musinsashop.dto.CategorySearchDto;
 import com.example.musinsashop.repository.CategoryRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
+import javax.naming.Name;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -25,10 +27,18 @@ public class CategoryService {
         return CategorySearchDto.of(category);
     }
 
-    @Cacheable("minPrice")
+    @Cacheable("categoryMinPrice")
     public CategoryMinPriceTotalDto findMinPrice() {
         List<Category> categories = categoryRepository.findAll();
 
         return CategoryMinPriceTotalDto.of(categories);
+    }
+
+    @Cacheable(value ="categoryMinMaxPrice", key = "#categoryName")
+    public CategoryMinMaxPriceDto findMinMaxPrice(String categoryName) {
+        Category category = categoryRepository.findByName(categoryName)
+                .orElseThrow(NoSuchElementException::new);
+
+        return CategoryMinMaxPriceDto.of(category);
     }
 }
