@@ -30,9 +30,6 @@ public class BrandTest {
     @Test
     void brandCategory() {
         //given
-        BrandAddDto brandAddDto = BrandAddDto.builder()
-                .name("C")
-                .build();
 
         //when
         Brand brand = brandAddDto.toEntity();
@@ -46,13 +43,9 @@ public class BrandTest {
     @Test
     void brandAddCategory() {
         //given
-        BrandAddDto brandAddDto = BrandAddDto.builder()
-                .name("C")
-                .build();
 
         //when
         Brand brand = brandAddDto.toEntity();
-        category.addBrand(brand);
         brand.addCategory(category);
 
         //then

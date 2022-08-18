@@ -1,5 +1,7 @@
 package com.example.musinsashop.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,6 +36,9 @@ public class Brand extends BaseTimeEntity {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @OneToMany(mappedBy = "brand")
+    private List<Product> products = new ArrayList<>();
+
     // 회원 상태 DEFAULT(기본), DELETED(삭제됨)
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -42,10 +48,12 @@ public class Brand extends BaseTimeEntity {
     }
 
     @Builder
-    public Brand(Long id, String name, Category category, DataStatus status) {
+    public Brand(Long id, String name, Category category, List<Product> products,
+            DataStatus status) {
         this.id = id;
         this.name = name;
         this.category = category;
+        this.products = products;
         this.status = status;
     }
 
@@ -56,6 +64,17 @@ public class Brand extends BaseTimeEntity {
 
         this.category = category;
         category.addBrand(this);
+    }
+
+    public void addProduct(Product product) {
+        if (products == null) {
+            this.products = new ArrayList<>();
+        }
+        this.products.add(product);
+    }
+
+    public void removeProduct(Product product) {
+        this.products.remove(product);
     }
 
     @Override
@@ -75,4 +94,5 @@ public class Brand extends BaseTimeEntity {
     public int hashCode() {
         return Objects.hash(id, name, category, status);
     }
+
 }
