@@ -7,7 +7,6 @@ import com.example.musinsashop.dto.CategorySearchDto;
 import com.example.musinsashop.repository.CategoryRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
-import javax.naming.Name;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

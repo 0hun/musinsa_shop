@@ -2,24 +2,24 @@ package com.example.musinsashop.dto;
 
 import com.example.musinsashop.domain.DataStatus;
 import com.example.musinsashop.domain.Product;
+import javax.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class ProductAddDto {
 
-    private Long categoryId;
-
+    @NotNull
     private Long BrandId;
 
+    @NotNull
     private Integer price;
 
     public ProductAddDto() {
     }
 
     @Builder
-    public ProductAddDto(Long categoryId, Long brandId, Integer price) {
-        this.categoryId = categoryId;
+    public ProductAddDto(Long brandId, Integer price) {
         BrandId = brandId;
         this.price = price;
     }
