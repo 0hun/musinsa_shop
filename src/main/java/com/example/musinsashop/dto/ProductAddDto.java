@@ -10,7 +10,7 @@ import lombok.Getter;
 public class ProductAddDto {
 
     @NotNull
-    private Long BrandId;
+    private Long brandId;
 
     @NotNull
     private Integer price;
@@ -20,7 +20,7 @@ public class ProductAddDto {
 
     @Builder
     public ProductAddDto(Long brandId, Integer price) {
-        BrandId = brandId;
+        this.brandId = brandId;
         this.price = price;
     }
 

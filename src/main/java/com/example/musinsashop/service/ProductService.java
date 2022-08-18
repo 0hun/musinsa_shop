@@ -3,6 +3,7 @@ package com.example.musinsashop.service;
 import com.example.musinsashop.domain.Brand;
 import com.example.musinsashop.domain.Product;
 import com.example.musinsashop.dto.ProductAddDto;
+import com.example.musinsashop.dto.ProductUpdateDto;
 import com.example.musinsashop.repository.BrandRepository;
 import com.example.musinsashop.repository.ProductRepository;
 import java.util.NoSuchElementException;
@@ -28,5 +29,13 @@ public class ProductService {
         product.addBrand(brand);
 
         productRepository.save(product);
+    }
+
+    @Transactional
+    public void updateProduct(ProductUpdateDto dto) {
+        Product product = productRepository.findById(dto.getProductId())
+                .orElseThrow(NoSuchElementException::new);
+
+        product.updatePrice(dto.getPrice());
     }
 }

@@ -89,4 +89,8 @@ public class Product extends BaseTimeEntity {
 
         return false;
     }
+
+    public void updatePrice(Integer price) {
+        this.price = price;
+    }
 }

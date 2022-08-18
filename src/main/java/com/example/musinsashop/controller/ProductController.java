@@ -1,11 +1,13 @@
 package com.example.musinsashop.controller;
 
 import com.example.musinsashop.dto.ProductAddDto;
+import com.example.musinsashop.dto.ProductUpdateDto;
 import com.example.musinsashop.service.ProductService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,13 @@ public class ProductController {
         productService.addProduct(dto);
 
         return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping
+    public ResponseEntity<Void> updateProduct(@Valid @RequestBody ProductUpdateDto dto) {
+        productService.updateProduct(dto);
+
+        return ResponseEntity.noContent().build();
     }
 
 }
