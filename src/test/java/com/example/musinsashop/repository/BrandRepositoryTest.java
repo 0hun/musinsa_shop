@@ -58,7 +58,7 @@ public class BrandRepositoryTest {
 
         //when
         Throwable thrown = catchThrowable(() -> {
-            brandRepository.save(brandRepository.save(brand));
+            brandRepository.save(brand);
         });
 
         //then
@@ -100,7 +100,7 @@ public class BrandRepositoryTest {
         boolean existsCategory = brandRepository.existsByName(name);
 
         //then
-        assertThat(existsCategory).isEqualTo(false);
+        assertThat(existsCategory).isFalse();
     }
 
     @Test

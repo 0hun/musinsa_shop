@@ -1,5 +1,6 @@
 package com.example.musinsashop.dto;
 
+import com.example.musinsashop.domain.DataStatus;
 import com.example.musinsashop.domain.Product;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,17 +8,17 @@ import lombok.Getter;
 @Getter
 public class ProductAddDto {
 
-    private long categoryId;
+    private Long categoryId;
 
-    private long BrandId;
+    private Long BrandId;
 
-    private int price;
+    private Integer price;
 
     public ProductAddDto() {
     }
 
     @Builder
-    public ProductAddDto(long categoryId, long brandId, int price) {
+    public ProductAddDto(Long categoryId, Long brandId, Integer price) {
         this.categoryId = categoryId;
         BrandId = brandId;
         this.price = price;
@@ -26,6 +27,7 @@ public class ProductAddDto {
     public Product toEntity() {
         return Product.builder()
                 .price(this.price)
+                .status(DataStatus.DEFAULT)
                 .build();
     }
 }

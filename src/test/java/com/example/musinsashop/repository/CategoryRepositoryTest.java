@@ -49,7 +49,7 @@ public class CategoryRepositoryTest {
 
         //when
         Throwable thrown = catchThrowable(() -> {
-            categoryRepository.save(categoryRepository.save(category));
+            categoryRepository.save(category);
         });
 
         //then
@@ -85,7 +85,7 @@ public class CategoryRepositoryTest {
         boolean existsCategory = categoryRepository.existsByName(name);
 
         //then
-        assertThat(existsCategory).isEqualTo(false);
+        assertThat(existsCategory).isFalse();
     }
 
     @Test

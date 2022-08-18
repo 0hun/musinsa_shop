@@ -16,7 +16,7 @@ public class BrandAddDto {
     }
 
     @Builder
-    public BrandAddDto(long categoryId, String name) {
+    public BrandAddDto(Long categoryId, String name) {
         this.categoryId = categoryId;
         this.name = name;
     }
