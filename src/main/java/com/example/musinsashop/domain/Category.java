@@ -77,4 +77,16 @@ public class Category extends BaseTimeEntity {
     public int hashCode() {
         return Objects.hash(id, name, brands, status);
     }
+
+    public void delete() {
+        this.status = DataStatus.DELETED;
+    }
+
+    public boolean isDeleted() {
+        if (this.status.equals(DataStatus.DELETED)) {
+            return true;
+        }
+
+        return false;
+    }
 }
