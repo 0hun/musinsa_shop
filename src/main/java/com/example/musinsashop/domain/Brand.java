@@ -107,4 +107,11 @@ public class Brand extends BaseTimeEntity {
 
         return false;
     }
+
+    public int minPrice() {
+        return this.products.stream()
+                .mapToInt(Product::getPrice)
+                .min()
+                .orElse(0);
+    }
 }
